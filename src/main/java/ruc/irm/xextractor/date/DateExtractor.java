@@ -51,15 +51,15 @@ public class DateExtractor {
      * @return
      */
     public static Date extract(String text) {
-        try {
-            for (Finder f : finders) {
+        for (Finder f : finders) {
+            try {
                 Date d = f.extract(text);
                 if (d != null) {
                     return d;
                 }
+            } catch (Exception e) {
+                System.out.println("Warning: parse date error:" + text);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
         return null;
     }
