@@ -1,5 +1,8 @@
 package ruc.irm.xextractor.date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.*;
 
 /**
@@ -26,6 +29,8 @@ import java.util.*;
  * @date Sep 11, 2016 09:42
  */
 public class DateExtractor {
+    private static Logger LOG = LoggerFactory.getLogger(DateExtractor.class);
+
     /**
      * extract date by the following Finder sequence,
      * make sure all TimeFinders are located before DateFinders
@@ -35,12 +40,54 @@ public class DateExtractor {
             new TimeFinder2(),
             new TimeFinder3(),
             new TimeFinder4(),
+            new TimeFinder5(),
+            new TimeFinder6(),
+            new TimeFinder7(),
             new TimeSomeAgoFinder(),
 
             new DateFinder1(),
             new DateFinder2(),
             new DateFinder3(),
             new DateFinder4(),
+            new DateFinder5(),
+            new DateSomeAgoFinder()
+    };
+
+    /**
+     * 美式日期
+     */
+    private static Finder[] usaFinders = new Finder[]{
+            new TimeFinder1(),
+            new TimeFinder2(),
+            new TimeFinder3(),
+            new TimeFinder4(),
+            new TimeFinder5(),
+            new TimeFinder6(),
+            new TimeSomeAgoFinder(),
+
+            new DateFinder1(),
+            new DateFinder2(),
+            new DateFinder3(),
+            new DateFinder4(),
+            new DateSomeAgoFinder()
+    };
+
+    /**
+     * 英式日期
+     */
+    private static Finder[] britishFinders = new Finder[]{
+            new TimeFinder1(),
+            new TimeFinder2(),
+            new TimeFinder3(),
+            new TimeFinder4(),
+            new TimeFinder5(),
+            new TimeFinder7(),
+            new TimeSomeAgoFinder(),
+
+            new DateFinder1(),
+            new DateFinder2(),
+            new DateFinder3(),
+            new DateFinder5(),
             new DateSomeAgoFinder()
     };
 
@@ -58,7 +105,38 @@ public class DateExtractor {
                     return d;
                 }
             } catch (Exception e) {
-                System.out.println("Warning: parse date error:" + text);
+                LOG.warn("Warning: parse date error:" + text);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 根据传入的国家，选择日期抽取的方法
+     *
+     * @param text
+     * @param country：如果为british, 则选择英式日期，即日-月-年的格式
+     * @return
+     */
+    public static Date extract(String text, String country) {
+        Finder[] myFinders = null;
+
+        if("british".equalsIgnoreCase(country)) {
+            myFinders = britishFinders;
+        } else if("usa".equalsIgnoreCase(country)) {
+            myFinders = usaFinders;
+        } else {
+            myFinders = finders;
+        }
+
+        for (Finder f : myFinders) {
+            try {
+                Date d = f.extract(text);
+                if (d != null) {
+                    return d;
+                }
+            } catch (Exception e) {
+                LOG.warn("Warning: parse date error:" + text);
             }
         }
         return null;
@@ -71,6 +149,8 @@ public class DateExtractor {
 
         Finder f = new TimeSomeAgoFinder();
         f.validate();
+
+        System.out.println(extract("08:32, 11.05.2017\n", "british"));
 
 //        String[] docs = new String[]{
 //                "December 21, 2016 | 3:32pm",

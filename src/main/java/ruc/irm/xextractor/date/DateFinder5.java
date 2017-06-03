@@ -5,20 +5,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 美式日期（DateFinder4和DateFinder5应该只能取一个，后续可以根据域名或者国家决定
- *
- * 例如：6-19-2016
- *
+ * 英式日期：
+ * 16-05-2016
+ * 15.05.2017
  * @author Tian Xia
  * @date Dec 21, 2016 19:24
  */
-class DateFinder4 extends Finder {
-    //2016/12/21 09:22:00
+class DateFinder5 extends Finder {
     private static Pattern pattern = Pattern.compile("(?<![0-9])"  // Don't start match in middle of a number.
-                    + "(0?[1-9]|1[0-2])"  //month
-                    + "[-/\\.月]+"  // Separator
                     + "(0?[1-9]|[12][0-9]|3[01])"  // Day of month
                     + "[-/\\.日]+"  // Separator
+                    + "(0?[1-9]|1[0-2])"  //month
+                    + "[-/\\.月]+"  // Separator
                     + "(20[0-9][0-9])"  // 4 digit year
                     + "[年]?"  // Separator
             , Pattern.CASE_INSENSITIVE
@@ -29,8 +27,8 @@ class DateFinder4 extends Finder {
         String text = s.toLowerCase();
         Matcher matcher = pattern.matcher(text);
         if(matcher.find()) {
-            int month = Integer.parseInt((matcher.group(1)));
-            int day = Integer.parseInt(matcher.group(2));
+            int day = Integer.parseInt((matcher.group(1)));
+            int month = Integer.parseInt(matcher.group(2));
             int year = Integer.parseInt(matcher.group(3));
             if(month>12 & day<=12) {
                 return makeDate(year, day, month);
@@ -43,7 +41,7 @@ class DateFinder4 extends Finder {
     }
 
     public void validate(){
-        check("6-19-2016", "2016/06/19");
-        check("6月19日2016年", "2016/06/19");
+        check("16-05-2016", "2016/05/16");
+        check("19日5月2016年", "2016/05/19");
     }
 }
