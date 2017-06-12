@@ -11,9 +11,13 @@ import java.util.Map;
  * @date Dec 21, 2016 16:25
  */
 abstract class Finder {
-    static String monthNameRegex = ("(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec"
-            + "|January|February|March|April|June|July|August|September|October|November|December"
-            + ")").toLowerCase();
+    static String monthNameRegex = ("(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug" +
+            "|Sep|Sept|Oct|Nov|Dec" +
+            "|January|February|March|April|June|July|August|September" +
+            "|October|November|December" +
+            "|января|февраля|марта|апрелямая|июня|июля|августа" +
+            "|сентября|октября|ноября|ноября|декабря" +
+            ")").toLowerCase();
 
     static Map<String, Integer> monthMapping = new HashMap<>();
 
@@ -42,6 +46,19 @@ abstract class Finder {
         monthMapping.put("November", 11);
         monthMapping.put("dec", 12);
         monthMapping.put("december", 12);
+        //俄罗斯月份: https://wenku.baidu.com/view/94650f39bed5b9f3f90f1cbc.html
+        monthMapping.put("января", 1);
+        monthMapping.put("февраля", 2);
+        monthMapping.put("марта", 3);
+        monthMapping.put("апреля", 4);
+        monthMapping.put("мая", 5);
+        monthMapping.put("июня", 6);
+        monthMapping.put("июля", 7);
+        monthMapping.put("августа", 8);
+        monthMapping.put("сентября", 9);
+        monthMapping.put("октября", 10);
+        monthMapping.put("ноября", 11);
+        monthMapping.put("декабря", 12);
     }
 
 
