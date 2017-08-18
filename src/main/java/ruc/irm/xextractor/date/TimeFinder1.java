@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /**
  * Monday, 05 Dec 2016 09:08 AM
  * Wednesday, 21 Dec 2016 01:23 PM
- *
+ * 16 August 2017, 23:23
  * @author Tian Xia
  * @date Dec 21, 2016 16:30
  */
@@ -19,7 +19,7 @@ class TimeFinder1 extends Finder {
                     + monthNameRegex
                     + "[-\\s/.]"  // Separator
                     + "(20[0-9][0-9])"  // 4 digit year
-                    + "[\\s]+"  // Separator
+                    + ",?[\\s]+"  // Separator
                     + "(0?[0-9]|[0-5][0-9])"  // hour
                     + ":"  // Separator
                     + "(0?[0-9]|[0-5][0-9])"  // minutes
