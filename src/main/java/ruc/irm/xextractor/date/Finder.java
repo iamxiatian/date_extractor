@@ -11,8 +11,8 @@ import java.util.Map;
  * @date Dec 21, 2016 16:25
  */
 abstract class Finder {
-    static String monthNameRegex = ("(Jan|Jan\\.|Feb|Feb\\.|Mar|Mar\\.|Apr|Apr\\.|May|May\\.|Jun|Jun\\.|Jul|Jul\\.|Aug|Aug\\." +
-            "|Sep|Sep\\.|Sept|Sept\\.|Oct|Oct\\.|Nov|Nov\\.|Dec|Dec\\." +
+    static String monthNameRegex = ("(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug" +
+            "|Sep|Sept|Oct|Nov|Dec" +
             "|January|February|March|April|June|July|August|September" +
             "|October|November|December" +
             "|января|февраля|марта|апрелямая|июня|июля|августа" +
@@ -23,41 +23,28 @@ abstract class Finder {
 
     static {
         monthMapping.put("jan", 1);
-        monthMapping.put("jan.", 1);
         monthMapping.put("january", 1);
         monthMapping.put("feb", 2);
-        monthMapping.put("feb.", 2);
         monthMapping.put("february", 2);
         monthMapping.put("mar", 3);
-        monthMapping.put("mar.", 3);
         monthMapping.put("march", 3);
         monthMapping.put("apr", 4);
-        monthMapping.put("apr.", 4);
         monthMapping.put("april", 4);
         monthMapping.put("may", 5);
-        monthMapping.put("may.", 5);
         monthMapping.put("jun", 6);
-        monthMapping.put("jun.", 6);
         monthMapping.put("june", 6);
         monthMapping.put("jul", 7);
-        monthMapping.put("jul.", 7);
         monthMapping.put("july", 7);
         monthMapping.put("aug", 8);
-        monthMapping.put("aug.", 8);
         monthMapping.put("august", 8);
         monthMapping.put("sep", 9);
-        monthMapping.put("sep.", 9);
         monthMapping.put("sept", 9);
-        monthMapping.put("sept.", 9);
         monthMapping.put("september", 9);
         monthMapping.put("oct", 10);
-        monthMapping.put("oct.", 10);
         monthMapping.put("october", 10);
         monthMapping.put("nov", 11);
-        monthMapping.put("nov.", 11);
         monthMapping.put("November", 11);
         monthMapping.put("dec", 12);
-        monthMapping.put("dec.", 12);
         monthMapping.put("december", 12);
         //俄罗斯月份: https://wenku.baidu.com/view/94650f39bed5b9f3f90f1cbc.html
         monthMapping.put("января", 1);

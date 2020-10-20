@@ -43,6 +43,7 @@ public class DateExtractor {
             new TimeFinder5(),
             new TimeFinder6(),
             new TimeFinder7(),
+            new TimeFinder8(),
             new TimeSomeAgoFinder(),
 
             new DateFinder1(),
@@ -50,6 +51,7 @@ public class DateExtractor {
             new DateFinder3(),
             new DateFinder4(),
             new DateFinder5(),
+            new DateFinder6(),
             new DateSomeAgoFinder()
     };
 

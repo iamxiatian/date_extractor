@@ -33,6 +33,8 @@ public class DateExtractorTest {
 
         d = DateExtractor.extract("16 August 2017, 23:23");
         assertEquals(df.format(d), "2017-08-16 23:23");
+
+        System.out.println(DateExtractor.extract( "Published Oct. 19 at 6:54 am"));
     }
 
     /**
