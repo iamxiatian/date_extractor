@@ -11,6 +11,11 @@ import ruc.irm.xextractor.date.DateExtractor;
 Date d = DateExtractor.extract( "December 21, 2016 | 3:32pm");
 
 System.out.println(d);
+
+d = DateExtractor.extract( "Published Oct. 19 at 6:54 am");
+
+System.out.println(d);
+
 ```
 
 The output should be:
