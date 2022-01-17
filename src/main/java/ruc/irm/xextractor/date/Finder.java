@@ -43,7 +43,7 @@ abstract class Finder {
         monthMapping.put("oct", 10);
         monthMapping.put("october", 10);
         monthMapping.put("nov", 11);
-        monthMapping.put("November", 11);
+        monthMapping.put("november", 11);
         monthMapping.put("dec", 12);
         monthMapping.put("december", 12);
         //俄罗斯月份: https://wenku.baidu.com/view/94650f39bed5b9f3f90f1cbc.html
